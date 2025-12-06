@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Rocket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -23,6 +23,14 @@ const Navbar = () => {
     { href: '#contact', label: 'Kontakt' },
   ];
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -32,8 +40,9 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <a href="#home" className="font-display text-2xl font-bold gradient-text">
-          WebCraft<span className="text-accent">.</span>
+        <a href="#home" className="flex items-center gap-2 font-display text-2xl font-bold gradient-text">
+          <Rocket className="w-7 h-7 text-primary" />
+          SpaceCore
         </a>
 
         {/* Desktop Navigation */}
@@ -48,7 +57,10 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <Button className="glow-primary hover:scale-105 transition-transform duration-300">
+          <Button 
+            onClick={scrollToContact}
+            className="glow-primary hover:scale-105 transition-transform duration-300"
+          >
             Darmowa wycena
           </Button>
         </div>
@@ -75,7 +87,10 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <Button className="w-full mt-4 glow-primary">
+          <Button 
+            onClick={scrollToContact}
+            className="w-full mt-4 glow-primary"
+          >
             Darmowa wycena
           </Button>
         </div>
