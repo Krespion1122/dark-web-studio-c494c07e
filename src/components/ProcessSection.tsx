@@ -1,28 +1,32 @@
-import { MessageSquare, Lightbulb, Code, Rocket } from 'lucide-react';
+import { MessageSquare, Lightbulb, Code, Rocket, Clock } from 'lucide-react';
 
 const steps = [
   {
     icon: <MessageSquare className="w-8 h-8" />,
     step: '01',
     title: 'Konsultacja',
+    duration: '1-2 dni',
     description: 'Poznajemy Twoje potrzeby, cele biznesowe i wizję projektu. Bezpłatna rozmowa bez zobowiązań.',
   },
   {
     icon: <Lightbulb className="w-8 h-8" />,
     step: '02',
     title: 'Projekt',
+    duration: '3-5 dni',
     description: 'Tworzymy makiety i projekty graficzne. Dopracowujemy każdy detal według Twoich wskazówek.',
   },
   {
     icon: <Code className="w-8 h-8" />,
     step: '03',
     title: 'Realizacja',
-    description: 'Kodujemy stronę z najwyższą dbałością o jakość, responsywność i wydajność.',
+    duration: '5-14 dni',
+    description: 'Kodujemy stronę od zera z najwyższą dbałością o jakość, responsywność i wydajność.',
   },
   {
     icon: <Rocket className="w-8 h-8" />,
     step: '04',
     title: 'Wdrożenie',
+    duration: '1-2 dni',
     description: 'Publikujemy stronę, konfigurujemy hosting i przekazujemy pełną dokumentację.',
   },
 ];
@@ -42,7 +46,7 @@ const ProcessSection = () => {
           </h2>
           <p className="text-muted-foreground text-lg">
             Przejrzysty proces, stały kontakt i terminowa realizacja. 
-            Od pomysłu do gotowej strony w 4 prostych krokach.
+            Od pomysłu do gotowej strony w 4 prostych krokach. Każdy projekt tworzymy od zera!
           </p>
         </div>
 
@@ -69,9 +73,15 @@ const ProcessSection = () => {
                     {step.icon}
                   </div>
                   
-                  <h3 className="font-display text-2xl font-bold mb-4">
+                  <h3 className="font-display text-2xl font-bold mb-2">
                     {step.title}
                   </h3>
+                  
+                  {/* Duration */}
+                  <div className="flex items-center gap-2 text-primary text-sm font-medium mb-4">
+                    <Clock className="w-4 h-4" />
+                    {step.duration}
+                  </div>
                   
                   <p className="text-muted-foreground">
                     {step.description}

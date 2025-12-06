@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Twitter, ArrowUp } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Twitter, ArrowUp, Rocket } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -17,7 +17,7 @@ const Footer = () => {
       { label: 'O nas', href: '#' },
       { label: 'Portfolio', href: '#portfolio' },
       { label: 'Cennik', href: '#pricing' },
-      { label: 'Blog', href: '#' },
+      { label: 'FAQ', href: '#faq' },
       { label: 'Kontakt', href: '#contact' },
     ],
     legal: [
@@ -43,8 +43,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#home" className="font-display text-3xl font-bold gradient-text inline-block mb-4">
-              WebCraft<span className="text-accent">.</span>
+            <a href="#home" className="flex items-center gap-2 font-display text-3xl font-bold gradient-text mb-4">
+              <Rocket className="w-8 h-8 text-primary" />
+              SpaceCore
             </a>
             <p className="text-muted-foreground mb-6 max-w-sm">
               Tworzymy unikalne strony internetowe, które wyróżnią Twój biznes w sieci. 
@@ -112,7 +113,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border/30">
           <p className="text-muted-foreground text-sm mb-4 md:mb-0">
-            © 2024 WebCraft. Wszelkie prawa zastrzeżone.
+            © 2024 SpaceCore. Wszelkie prawa zastrzeżone. Wszystkie strony tworzymy od zera.
           </p>
           
           {/* Back to Top */}

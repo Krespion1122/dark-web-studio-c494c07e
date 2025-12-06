@@ -60,6 +60,13 @@ const packages = [
   },
 ];
 
+const scrollToContact = () => {
+  const contactSection = document.getElementById('contact');
+  if (contactSection) {
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 const PricingSection = () => {
   return (
     <section id="pricing" className="py-24 relative overflow-hidden">
@@ -75,7 +82,7 @@ const PricingSection = () => {
           </h2>
           <p className="text-muted-foreground text-lg">
             Wybierz pakiet dopasowany do Twoich potrzeb. 
-            Wszystkie ceny są ostateczne, bez ukrytych kosztów.
+            Wszystkie ceny są ostateczne, bez ukrytych kosztów. Każda strona tworzona od zera!
           </p>
         </div>
 
@@ -112,6 +119,7 @@ const PricingSection = () => {
               {/* Price */}
               <div className="text-center mb-8">
                 <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-xs text-muted-foreground mr-1">od</span>
                   <span className="text-5xl font-display font-bold gradient-text">{pkg.price}</span>
                   <span className="text-muted-foreground">PLN</span>
                 </div>
@@ -132,12 +140,12 @@ const PricingSection = () => {
 
               {/* CTA */}
               <Button
+                onClick={scrollToContact}
                 className={`w-full py-6 text-lg ${
                   pkg.popular
                     ? 'glow-primary hover:scale-105'
-                    : 'glass glass-hover'
+                    : 'bg-primary text-primary-foreground hover:bg-primary/90'
                 }`}
-                variant={pkg.popular ? 'default' : 'outline'}
               >
                 Wybierz pakiet
               </Button>
@@ -150,7 +158,11 @@ const PricingSection = () => {
           <p className="text-muted-foreground mb-4">
             Potrzebujesz indywidualnej wyceny? Masz specyficzne wymagania?
           </p>
-          <Button size="lg" variant="outline" className="glass glass-hover">
+          <Button 
+            size="lg" 
+            onClick={scrollToContact}
+            className="glow-primary hover:scale-105 transition-transform duration-300"
+          >
             Zamów darmową wycenę
           </Button>
         </div>
