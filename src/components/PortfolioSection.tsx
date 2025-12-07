@@ -106,7 +106,7 @@ const PortfolioSection = () => {
               {/* Overlay */}
               <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent transition-opacity duration-500 ${hoveredId === project.id ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="inline-block px-3 py-1 text-sm bg-background/90 text-primary rounded-full mb-3 font-medium border border-primary/30">
+                  <span className="category-badge inline-block px-3 text-sm bg-background/90 text-primary rounded-full mb-3 font-medium border border-primary/30">
                     {project.category}
                   </span>
                   <h3 className="font-display text-2xl font-bold mb-2">
@@ -122,7 +122,7 @@ const PortfolioSection = () => {
                         e.stopPropagation();
                         handlePreview(project);
                       }}
-                      className="bg-secondary text-secondary-foreground border border-border/50 hover:scale-105 transition-transform duration-200"
+                      className="bg-secondary text-secondary-foreground border border-border/50 hover:scale-110 hover:-translate-y-1 transition-all duration-300"
                     >
                       <Eye className="w-4 h-4 mr-2" />
                       Podgląd
@@ -133,7 +133,7 @@ const PortfolioSection = () => {
                         e.stopPropagation();
                         handleOpen(project);
                       }}
-                      className="glow-primary"
+                      className="bg-secondary text-secondary-foreground border border-border/50 hover:scale-110 hover:-translate-y-1 transition-all duration-300"
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       Otwórz
@@ -144,7 +144,7 @@ const PortfolioSection = () => {
 
               {/* Always visible info */}
               <div className={`absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background via-background/95 to-transparent transition-opacity duration-500 ${hoveredId === project.id ? 'opacity-0' : 'opacity-100'}`}>
-                <span className="inline-block px-3 py-1 text-xs bg-background/90 text-primary rounded-full mb-2 font-medium border border-primary/30">
+                <span className="category-badge inline-block px-3 text-xs bg-background/90 text-primary rounded-full mb-2 font-medium border border-primary/30">
                   {project.category}
                 </span>
                 <h3 className="font-display text-xl font-bold">
