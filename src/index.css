@@ -1,14 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
 
-/* Fix for text cutoff issues */
+/* Enhanced fix for text cutoff issues - prevents descender clipping */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, a, li {
+html {
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+/* Ensure descenders (g, y, p, q, j) are fully visible */
+h1, h2, h3, h4, h5, h6, p, span, a, li, button, div {
   line-height: 1.5;
-  padding-bottom: 0.1em;
+  padding-bottom: 0.15em;
 }
 
 @tailwind base;

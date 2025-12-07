@@ -141,10 +141,10 @@ const PricingSection = () => {
               {/* CTA */}
               <Button
                 onClick={scrollToContact}
-                className={`w-full py-6 text-lg ${
+                className={`w-full py-6 text-lg transition-all duration-300 ${
                   pkg.popular
                     ? 'glow-primary hover:scale-105'
-                    : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                    : 'bg-secondary text-secondary-foreground border border-border/50 hover:bg-primary hover:text-primary-foreground hover:border-primary'
                 }`}
               >
                 Wybierz pakiet

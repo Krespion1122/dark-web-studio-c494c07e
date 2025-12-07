@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -23,13 +23,6 @@ const ContactSection = () => {
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
-  const contactInfo = [
-    { icon: <Mail className="w-5 h-5" />, label: 'Email', value: 'kontakt@webcraft.pl' },
-    { icon: <Phone className="w-5 h-5" />, label: 'Telefon', value: '+48 123 456 789' },
-    { icon: <MapPin className="w-5 h-5" />, label: 'Adres', value: 'Warszawa, Polska' },
-    { icon: <Clock className="w-5 h-5" />, label: 'Godziny', value: 'Pon-Pt: 9:00 - 17:00' },
-  ];
-
   return (
     <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-4">
@@ -45,26 +38,8 @@ const ContactSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
-          {/* Contact Info */}
+          {/* Quick Benefits */}
           <div className="lg:col-span-2 space-y-8">
-            <div>
-              <h3 className="font-display text-2xl font-bold mb-6">Dane kontaktowe</h3>
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-start gap-4 group">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground text-sm">{info.label}</p>
-                      <p className="text-foreground font-medium">{info.value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Benefits */}
             <div className="glass rounded-2xl p-6">
               <h4 className="font-display text-lg font-bold mb-4">Dlaczego warto?</h4>
               <ul className="space-y-3 text-muted-foreground">
@@ -83,6 +58,10 @@ const ContactSection = () => {
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-primary" />
                   Gwarancja satysfakcji
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                  Każda strona tworzona od zera
                 </li>
               </ul>
             </div>
