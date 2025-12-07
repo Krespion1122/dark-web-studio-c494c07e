@@ -95,11 +95,11 @@ const TestimonialsSection = () => {
           <div className="relative overflow-hidden">
             {/* Main Testimonial Card */}
             <div 
-              className={`glass rounded-3xl p-8 md:p-12 relative transition-all duration-500 ease-out ${
+              className={`glass rounded-3xl p-8 md:p-12 relative transition-all duration-300 ease-out ${
                 isSliding 
                   ? slideDirection === 'right' 
-                    ? 'opacity-0 translate-x-full' 
-                    : 'opacity-0 -translate-x-full'
+                    ? 'opacity-0 -translate-x-8' 
+                    : 'opacity-0 translate-x-8'
                   : 'opacity-100 translate-x-0'
               }`}
             >
@@ -140,7 +140,7 @@ const TestimonialsSection = () => {
                 variant="outline"
                 size="icon"
                 onClick={goToPrevious}
-                className="glass rounded-full w-12 h-12 border-border/50 hover:bg-primary/20 hover:border-primary/50 hover:text-primary transition-all duration-300"
+                className="glass glass-hover rounded-full w-12 h-12"
               >
                 <ChevronLeft className="w-5 h-5" />
               </Button>
@@ -154,7 +154,7 @@ const TestimonialsSection = () => {
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentIndex
                         ? 'bg-primary w-8'
-                        : 'bg-muted-foreground/30 hover:bg-primary/50'
+                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                     }`}
                   />
                 ))}
@@ -164,7 +164,7 @@ const TestimonialsSection = () => {
                 variant="outline"
                 size="icon"
                 onClick={goToNext}
-                className="glass rounded-full w-12 h-12 border-border/50 hover:bg-primary/20 hover:border-primary/50 hover:text-primary transition-all duration-300"
+                className="glass glass-hover rounded-full w-12 h-12"
               >
                 <ChevronRight className="w-5 h-5" />
               </Button>
