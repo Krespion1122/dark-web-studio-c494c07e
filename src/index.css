@@ -14,8 +14,15 @@ html {
 
 /* Ensure descenders (g, y, p, q, j) are fully visible */
 h1, h2, h3, h4, h5, h6, p, span, a, li, button, div {
-  line-height: 1.5;
-  padding-bottom: 0.15em;
+  line-height: 1.6 !important;
+  overflow: visible !important;
+}
+
+/* Category badges need extra padding for descenders */
+.category-badge {
+  padding-top: 0.35rem !important;
+  padding-bottom: 0.45rem !important;
+  line-height: 1.4 !important;
 }
 
 @tailwind base;
