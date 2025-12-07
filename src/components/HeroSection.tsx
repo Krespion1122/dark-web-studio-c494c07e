@@ -2,6 +2,13 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background Blobs */}
@@ -39,11 +46,20 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <Button size="lg" className="text-lg px-8 py-6 glow-primary hover:scale-105 transition-all duration-300 group">
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-6 glow-primary hover:scale-105 transition-all duration-300 group"
+              onClick={() => scrollToSection('contact')}
+            >
               Rozpocznij projekt
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline-static" className="text-lg px-8 py-6 glass hover:scale-105 transition-transform duration-300 group">
+            <Button 
+              size="lg" 
+              variant="outline-static" 
+              className="text-lg px-8 py-6 glass hover:scale-105 transition-transform duration-300 group"
+              onClick={() => scrollToSection('portfolio')}
+            >
               Zobacz portfolio
               <ArrowRight className="ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </Button>
