@@ -43,7 +43,7 @@ const HeroSection = () => {
               Rozpocznij projekt
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 glass hover:scale-105 transition-transform duration-300 group">
+            <Button size="lg" variant="outline-static" className="text-lg px-8 py-6 glass hover:scale-105 transition-transform duration-300 group">
               Zobacz portfolio
               <ArrowRight className="ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </Button>
