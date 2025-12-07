@@ -95,11 +95,11 @@ const TestimonialsSection = () => {
           <div className="relative overflow-hidden">
             {/* Main Testimonial Card */}
             <div 
-              className={`glass rounded-3xl p-8 md:p-12 relative transition-all duration-300 ease-out ${
+              className={`glass rounded-3xl p-8 md:p-12 relative transition-all duration-500 ease-out ${
                 isSliding 
                   ? slideDirection === 'right' 
-                    ? 'opacity-0 -translate-x-8' 
-                    : 'opacity-0 translate-x-8'
+                    ? 'opacity-0 -translate-x-16' 
+                    : 'opacity-0 translate-x-16'
                   : 'opacity-100 translate-x-0'
               }`}
             >
@@ -140,7 +140,7 @@ const TestimonialsSection = () => {
                 variant="outline"
                 size="icon"
                 onClick={goToPrevious}
-                className="glass glass-hover rounded-full w-12 h-12"
+                className="glass rounded-full w-12 h-12 border-primary/30 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
               >
                 <ChevronLeft className="w-5 h-5" />
               </Button>
@@ -164,7 +164,7 @@ const TestimonialsSection = () => {
                 variant="outline"
                 size="icon"
                 onClick={goToNext}
-                className="glass glass-hover rounded-full w-12 h-12"
+                className="glass rounded-full w-12 h-12 border-primary/30 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
               >
                 <ChevronRight className="w-5 h-5" />
               </Button>
