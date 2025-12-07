@@ -112,12 +112,16 @@ const TestimonialsSection = () => {
               <div className="relative z-10">
                 {/* Stars */}
                 <div className="flex gap-1 mb-6">
-                  {[...Array(Math.floor(testimonials[currentIndex].rating))].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                  ))}
-                  {testimonials[currentIndex].rating % 1 !== 0 && (
-                    <StarHalf className="w-5 h-5 fill-primary text-primary" />
-                  )}
+                  {[...Array(5)].map((_, i) => {
+                    const rating = testimonials[currentIndex].rating;
+                    if (i < Math.floor(rating)) {
+                      return <Star key={i} className="w-5 h-5 fill-primary text-primary" />;
+                    } else if (i < rating) {
+                      return <StarHalf key={i} className="w-5 h-5 fill-primary text-primary" />;
+                    } else {
+                      return <Star key={i} className="w-5 h-5 text-primary" />;
+                    }
+                  })}
                 </div>
 
                 {/* Text */}
