@@ -117,7 +117,14 @@ const TestimonialsSection = () => {
                     if (i < Math.floor(rating)) {
                       return <Star key={i} className="w-5 h-5 fill-primary text-primary" />;
                     } else if (i < rating) {
-                      return <StarHalf key={i} className="w-5 h-5 fill-primary text-primary" />;
+                      return (
+                        <div key={i} className="relative w-5 h-5">
+                          <Star className="w-5 h-5 text-primary absolute" />
+                          <div className="overflow-hidden w-[50%] absolute">
+                            <Star className="w-5 h-5 fill-primary text-primary" />
+                          </div>
+                        </div>
+                      );
                     } else {
                       return <Star key={i} className="w-5 h-5 text-primary" />;
                     }
