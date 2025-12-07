@@ -122,7 +122,7 @@ const PortfolioSection = () => {
                         e.stopPropagation();
                         handlePreview(project);
                       }}
-                      className="bg-primary text-primary-foreground hover:bg-primary/90"
+                      className="bg-secondary text-secondary-foreground border border-border/50 hover:scale-105 transition-transform duration-200"
                     >
                       <Eye className="w-4 h-4 mr-2" />
                       Podgląd
@@ -153,13 +153,6 @@ const PortfolioSection = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <Button size="lg" className="glow-primary hover:scale-105 transition-transform duration-300">
-            Zobacz więcej projektów
-          </Button>
         </div>
       </div>
     </section>

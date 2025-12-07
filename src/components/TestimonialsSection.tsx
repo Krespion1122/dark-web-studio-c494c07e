@@ -7,71 +7,70 @@ const testimonials = [
     id: 1,
     name: 'Anna Kowalska',
     company: 'Salon Urody Bella',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
     rating: 5,
-    text: 'Współpraca z SpaceCore to czysta przyjemność! Strona powstała od zera, dokładnie według mojej wizji. Klienci są zachwyceni, a rezerwacje online znacząco wzrosły.',
+    text: 'Strona powstała szybko i dokładnie według mojej wizji. Rezerwacje online znacząco wzrosły!',
   },
   {
     id: 2,
     name: 'Tomasz Nowak',
     company: 'Tech Solutions',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
     rating: 5,
-    text: 'Profesjonalne podejście i świetna komunikacja. Strona jest szybka, nowoczesna i przyciąga klientów. Polecam każdemu, kto szuka jakości.',
-  },
-  {
-    id: 3,
-    name: 'Maria Wiśniewska',
-    company: 'Restauracja Pod Lipą',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-    rating: 5,
-    text: 'Nasza nowa strona wygląda niesamowicie! System rezerwacji działa bez zarzutu. Od kiedy mamy nową stronę, liczba rezerwacji online wzrosła o 200%.',
-  },
-  {
-    id: 4,
-    name: 'Piotr Zieliński',
-    company: 'Kancelaria Prawna',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-    rating: 5,
-    text: 'Elegancka i profesjonalna strona, która buduje zaufanie klientów. Wszystko zrealizowane terminowo i zgodnie z ustaleniami. Bardzo polecam!',
-  },
-  {
-    id: 5,
-    name: 'Katarzyna Dąbrowska',
-    company: 'Sklep ModaPlus',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
-    rating: 5,
-    text: 'Sklep internetowy, który naprawdę sprzedaje! Intuicyjny panel, szybkie płatności i piękny design. Sprzedaż wzrosła o 150% w pierwszym miesiącu.',
+    text: 'Profesjonalne podejście i świetna komunikacja. Strona jest szybka i nowoczesna.',
   },
 ];
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isSliding, setIsSliding] = useState(false);
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right'>('right');
 
   useEffect(() => {
     if (!isAutoPlaying) return;
     
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      handleSlide('right');
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, currentIndex]);
+
+  const handleSlide = (direction: 'left' | 'right') => {
+    if (isSliding) return;
+    
+    setSlideDirection(direction);
+    setIsSliding(true);
+    
+    setTimeout(() => {
+      if (direction === 'right') {
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      } else {
+        setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      }
+      setIsSliding(false);
+    }, 300);
+  };
 
   const goToPrevious = () => {
     setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    handleSlide('left');
   };
 
   const goToNext = () => {
     setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    handleSlide('right');
   };
 
   const goToSlide = (index: number) => {
     setIsAutoPlaying(false);
-    setCurrentIndex(index);
+    if (index !== currentIndex) {
+      setSlideDirection(index > currentIndex ? 'right' : 'left');
+      setIsSliding(true);
+      setTimeout(() => {
+        setCurrentIndex(index);
+        setIsSliding(false);
+      }, 300);
+    }
   };
 
   return (
@@ -87,16 +86,23 @@ const TestimonialsSection = () => {
             Co mówią <span className="gradient-text">klienci?</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Poznaj opinie naszych zadowolonych klientów. 
-            Ich sukces to nasz największy powód do dumy.
+            Poznaj opinie naszych zadowolonych klientów.
           </p>
         </div>
 
         {/* Testimonial Carousel */}
         <div className="max-w-4xl mx-auto">
-          <div className="relative">
+          <div className="relative overflow-hidden">
             {/* Main Testimonial Card */}
-            <div className="glass rounded-3xl p-8 md:p-12 relative">
+            <div 
+              className={`glass rounded-3xl p-8 md:p-12 relative transition-all duration-300 ease-out ${
+                isSliding 
+                  ? slideDirection === 'right' 
+                    ? 'opacity-0 -translate-x-8' 
+                    : 'opacity-0 translate-x-8'
+                  : 'opacity-100 translate-x-0'
+              }`}
+            >
               {/* Quote Icon */}
               <div className="absolute top-6 right-6 text-primary/20">
                 <Quote className="w-16 h-16" />
@@ -117,19 +123,12 @@ const TestimonialsSection = () => {
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center gap-4">
-                  <img
-                    src={testimonials[currentIndex].avatar}
-                    alt={testimonials[currentIndex].name}
-                    className="w-14 h-14 rounded-full object-cover ring-2 ring-primary/30"
-                  />
-                  <div>
-                    <div className="font-display font-bold text-lg">
-                      {testimonials[currentIndex].name}
-                    </div>
-                    <div className="text-muted-foreground">
-                      {testimonials[currentIndex].company}
-                    </div>
+                <div>
+                  <div className="font-display font-bold text-lg">
+                    {testimonials[currentIndex].name}
+                  </div>
+                  <div className="text-muted-foreground">
+                    {testimonials[currentIndex].company}
                   </div>
                 </div>
               </div>
