@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Star, StarHalf, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const testimonials = [
   {
     id: 1,
-    name: 'Anna Kowalska',
-    company: 'Salon Urody Bella',
+    name: 'Weronika',
+    company: 'Korepetycje z matematyki',
     rating: 5,
-    text: 'Strona powstała szybko i dokładnie według mojej wizji. Rezerwacje online znacząco wzrosły!',
+    text: 'Strona do rezerwacji korepetycji działa świetnie. Uczniowie łatwo umawiają się na zajęcia!',
   },
   {
     id: 2,
-    name: 'Tomasz Nowak',
-    company: 'Tech Solutions',
-    rating: 5,
-    text: 'Profesjonalne podejście i świetna komunikacja. Strona jest szybka i nowoczesna.',
+    name: 'Marcin',
+    company: 'Biuro Nieruchomości',
+    rating: 4.5,
+    text: 'Profesjonalna strona, która pomaga nam prezentować oferty. Klienci chwalą intuicyjność.',
   },
 ];
 
@@ -112,9 +112,12 @@ const TestimonialsSection = () => {
               <div className="relative z-10">
                 {/* Stars */}
                 <div className="flex gap-1 mb-6">
-                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                  {[...Array(Math.floor(testimonials[currentIndex].rating))].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                   ))}
+                  {testimonials[currentIndex].rating % 1 !== 0 && (
+                    <StarHalf className="w-5 h-5 fill-primary text-primary" />
+                  )}
                 </div>
 
                 {/* Text */}
